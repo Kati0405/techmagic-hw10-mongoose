@@ -10,11 +10,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.catch((err) => console.error(err));
+mongoose
+  .connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .catch((err) => console.error(err));
 mongoose.set('debug', true);
 
 app.use(logger('dev'));
@@ -26,5 +27,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`)
-})
+  console.log(`Server is running on port: ${PORT}`);
+});
